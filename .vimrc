@@ -142,6 +142,13 @@ set fileencodings=utf8,cp1251
 set clipboard=unnamed
 set ruler
 
+map <F7> :wall \| make \| cope <CR><C-W>k
+map <F4> :cn<CR>:cc<CR>
+"zvzz:cc<CR>
+map <F3> :cp<CR>:cc<CR>
+"zvzz
+set makeprg=(cd\ ./build/\ &&\ make)
+
 set hidden
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
