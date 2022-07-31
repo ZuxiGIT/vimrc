@@ -11,7 +11,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'flazz/vim-colorschemes'
-Plugin 'tpope/vim-surround'
+" Plugin 'tpope/vim-surround'
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -58,10 +61,6 @@ set expandtab " Put tabs as spaces
 set softtabstop=4 "4 spaces in tab
 set autoindent
 
-" Включаем 256 цветов в терминале, мы ведь работаем из иксов?
-" Нужно во многих терминалах, например в gnome-terminal
-set t_Co=256
-
 syntax on "Включить подсветку синтаксиса
 
 set mousehide "Спрятать курсор мыши когда набираем текст
@@ -87,6 +86,9 @@ set fileencodings=utf8,cp1251
 set clipboard=unnamed
 set ruler
 
+set keywordprg=:Man
+runtime! ftplugin/man.vim
+
 map <F7> :wall \| make \| cope <CR><C-W>k
 map <F4> :cn<CR>:cc<CR>
 "zvzz:cc<CR>
@@ -101,5 +103,43 @@ nnoremap <C-P> :bprev<CR>
 " Выключаем звук в Vim
 set visualbell t_vb=
 
-set guifont=Monaco:h18
+" Включаем 256 цветов в терминале, мы ведь работаем из иксов?
+" Нужно во многих терминалах, например в gnome-terminal
+set t_Co=256
+" set guifont=Monaco:h18
 colorscheme OceanicNext
+set noshowmode
+
+" vim-airline
+
+let g:airline_theme='onedark'
+" let g:airline_theme='base16_oceanicnext'
+" let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
+let g:airline_powerline_fonts = 1
+" let g:Powerline_symbols='fancy'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+"let g:airline_symbols.colnr = ' ℅:'
+let g:airline_symbols.colnr = ' col:'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = ' '
+" let g:airline_symbols.linenr = ' ␤ '
+" let g:airline_symbols.maxlinenr = ' ㏑ '
+" let g:airline_symbols.maxlinenr = '☰ '
+" let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = ' '
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.dirty='⚡'
